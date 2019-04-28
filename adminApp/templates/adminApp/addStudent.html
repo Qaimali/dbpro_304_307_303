@@ -1,0 +1,62 @@
+{% extends "admin/change_form.html" %}
+
+{%load crispy_forms_tags%}
+{% block field_sets %}
+<form >
+    <fieldset class="module aligned">
+        {% csrf_token %}
+        <div class="form-row field-Classid">
+            <div>
+                <label class="required" for="id FirstName">
+                    First Name
+                </label>
+                <input id="id_FirstName" class="vTextField" type="text" name="FirstName" required="">
+            </div>
+        </div>
+        <div class="form-row field-LastName">
+            <div>
+                <label class="required" for="id LastName">
+                    Last Name
+                </label>
+                <input id="id_LastName" class="vTextField" type="text" name="LastName" required="">
+            </div>
+        </div>
+        <div class="form-row field-FatherName">
+            <div>
+                <label class="required" for="id FatherName">
+                    Father Name
+                </label>
+                <input id="id_fatherName" class="vTextField" type="text" name="FatherName" required="">
+            </div>
+        </div>
+        <div class="form-row field-Cnic">
+            <div>
+                <label class="required" for="id Cnic">
+                    Cnic
+                </label>
+                <input id="id_Cnic" class="vTextField" type="text" name="Cnic" required="">
+            </div>
+        </div>
+        <div class="form-row field-Contact">
+            <div>
+                <label class="required" for="id Contact">
+                    Contact
+                </label>
+                <input id="id_Cnic" class="vTextField" type="text" name="Contact" required="">
+            </div>
+        </div>
+        <div class="form-row field-Address">
+            <div>
+                <label class="required" for="id Address">
+                    Address
+                </label>
+                <input id="id_Address" class="vTextField" type="text" name="Address" required="">
+            </div>
+        </div>
+
+        {{block.super}}
+
+    </fieldset>
+</form>
+
+{% endblock %}

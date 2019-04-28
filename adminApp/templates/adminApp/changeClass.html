@@ -1,0 +1,44 @@
+{% extends "admin/change_form.html" %}
+
+{% block field_sets %}
+
+{{block.super}}
+<div>
+    <fieldset class="module">
+
+        <h2>Section</h2>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th ></th>
+                    <th>Name</th>
+
+
+                </tr>
+
+            </thead>
+            <tbody>
+                {% for val in osm_data  %}
+                {% if val %}
+                <tr class="form-row">
+                <td>
+                <a href="{% url 'admin:adminApp_section_change' val.id %}"
+                    class="btn btn-outline-secondary">{{val.SectionName}}</a>
+                
+                </td>
+                </tr>
+                {% endif %}
+
+                {% endfor %}
+                <tr class="add-row">
+                    <td colspan="4">
+                        <a href="{% url 'admin:adminApp_section_add' %}">add another class</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </fieldset>
+</div>
+
+{% endblock %}
