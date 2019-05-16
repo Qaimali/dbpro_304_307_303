@@ -2,6 +2,8 @@
 
 {% block field_sets %}
 
+{% block breadcrumbs %}
+{% endblock %}
 {{block.super}}
 <div>
     <fieldset class="module">
@@ -11,8 +13,10 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th ></th>
-                    <th>Name</th>
+                    <th></th>
+                    <th>
+                        <h3><b>Name</b></h3>
+                    </th>
 
 
                 </tr>
@@ -21,24 +25,68 @@
             <tbody>
                 {% for val in osm_data  %}
                 {% if val %}
-                <tr class="form-row">
-                <td>
-                <a href="{% url 'admin:adminApp_section_change' val.id %}"
-                    class="btn btn-outline-secondary">{{val.SectionName}}</a>
-                
-                </td>
-                </tr>
+                <fieldset class="module aligned">
+                    <tr class="form-row">
+                        <td>
+                            <a href="{% url 'admin:adminApp_section_change' val.id %}"
+                                class="btn btn-outline-secondary">{{val.SectionName}}</a>
+
+                        </td>
+                    </tr>
+                </fieldset>
                 {% endif %}
 
                 {% endfor %}
                 <tr class="add-row">
                     <td colspan="4">
-                        <a href="{% url 'admin:adminApp_section_add' %}">add another class</a>
+                        <a href="{% url 'admin:adminApp_section_add' %}">add another Section</a>
                     </td>
                 </tr>
+
+            </tbody>
+        </table>
+        <h2>Courses</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        <h3><b>Name</b></h3>
+                    </th>
+                    
+                    <th>
+                        <h3><b>Semster </b></h3>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for val in subjects  %}
+                {% if val %}
+                <fieldset class="module aligned">
+                    <tr class="form-row">
+                        <td>
+                            <a href="{% url 'admin:adminApp_subjectclass_change' val.id %}"
+                                class="btn btn-outline-secondary">{{val.SubjectId}}</a>
+
+                        </td>
+                        <td>
+                            <a href="{% url 'admin:adminApp_subjectclass_change' val.id %}"
+                                class="btn btn-outline-secondary">{{val.SemsterName}}</a>
+
+                        </td>
+                    </tr>
+                </fieldset>
+                {% endif %}
+                {% endfor %}
+                <tr class="add-row">
+                    <td colspan="4">
+                        <a href="{% url 'admin:adminApp_class_subject' class_id %}">add Class Subject</a>
+                    </td>
+                </tr>
+
             </tbody>
         </table>
     </fieldset>
+
 </div>
 
 {% endblock %}

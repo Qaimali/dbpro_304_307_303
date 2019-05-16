@@ -1,0 +1,45 @@
+{% extends "admin/base_site.html" %}
+
+{% block breadcrumbs %}
+{% endblock %}
+{% block branding %}
+<h1 id="site-name"><a href="{% url 'admin:index' %}">Learning Managemnet System</a></h1>
+{% endblock %}
+{% block content %}
+<fieldset class="module">
+    <h2>Attendance </h2>
+    <h4>Class:{{classId}}</h4>
+    <h4>Section:{{SectionId}}</h4>
+    <h4> Semster:{{semsterId.SemsterName}}</h4>
+    <h4>Subject:{{subjectId}}</h4>
+    <a href="{% url 'admin:adminApp_subject_attendance_pdf' SectionId.id semsterId.id  subjectId.id %}">Generte Report</a>
+    <table>
+        <thead>
+            <tr>
+                <td>
+                    <h4>Date</h4>
+                </td>
+                <td>
+                    <h4>Total Present</h4>
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+        {%for val,x in dates%}
+        {%if val%}
+        <tr class="form-row">
+            <td>
+                <a href="{% url 'admin:adminApp_attendance_detail' SectionId.id val.group.id  subjectId.id %}">{{val.group.Date}}</a>
+            </td>
+            <td>
+                {{x.TotalPresent}}
+            </td>
+            
+        </tr>
+
+        {%endif %}
+        {%endfor%}
+        </tbody>
+    </table>
+</fieldset>
+{% endblock %}

@@ -1,0 +1,113 @@
+{% extends "admin/change_form.html" %}
+
+{% block field_sets %}
+
+{% block breadcrumbs %}
+{% endblock %}
+{{block.super}}
+<div>
+    <fieldset class="module">
+
+        <h2>Students</h2>
+
+        <table id="student_list">
+            <thead>
+                <tr>
+                    <th class="sortable column-registrationNumber" scope="col">
+                        <div class="text">
+                            <a>Registration Number</a>
+                        </div>
+                        <div class="clear">
+
+                        </div>
+                    </th>
+                    <th class="sortable column-PersonId" scope="col">
+                        <div class="text">
+                            <a>Name</a>
+                        </div>
+                        <div class="clear">
+
+                        </div>
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for val in osm_data  %}
+                {% if val %}
+                <tr class="row">
+                    <th class="field-registrationNumber">
+                        <a href="{% url 'admin:adminApp_student_change' val.id %}"> {{val.registrationNumber}}</a>
+                    </th>
+                    <td class="field-PersonId">
+
+                        {{val.PersonId}}
+
+                    </td>
+                </tr>
+                {% endif %}
+
+                {% endfor %}
+                <tr class="add-row">
+                    <td>
+                        <a href="{% url 'admin:adminApp_student_add' %}">add another Student</a>
+                    </td>
+                </tr>
+                <tr class="add-row">
+                    <td>
+                        <a href="{% url 'admin:adminApp_section_student_pdf' section_id %}">Generate Student List</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </fieldset>
+    <fieldset class="module">
+
+        <h2>Attendance</h2>
+
+        <tr class="add-row">
+            <td>
+                <a href="{% url 'admin:adminApp_section_semster_list' section_id %}">Mark Attendance</a>
+            </td>
+        </tr>
+    </fieldset>
+    <fieldset class="module">
+
+        <h2>Evaluation</h2>
+        <table id="student_list">
+            <thead>
+                <tr>
+                    <th class="sortable column-registrationNumber" scope="col">
+                        <div class="text">
+                            <a>Exam Name</a>
+                        </div>
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for val in evaluations  %}
+                {% if val %}
+                <tr class="row">
+                    <td>
+
+                        <a href="{% url 'admin:adminApp_section_evaluation' val.id %}"> {{val.Name}}</a>
+
+
+                    </td>
+                </tr>
+                {% endif %}
+
+                {% endfor %}
+                <tr class="add-row">
+                    <td>
+                        <a href="{% url 'admin:adminApp_exam_add' %}">add another Exam</a>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </fieldset>
+</div>
+
+{% endblock %}

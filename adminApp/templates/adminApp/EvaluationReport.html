@@ -1,0 +1,115 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Evaluation Report</title>
+    <style type="text/css">
+        @page {
+            size: A4;
+            margin: 1cm;
+        }
+
+        .table {
+            width: 100%;
+            max-width: 100%;
+            margin-bottom: 5px;
+            background-color: #fff;
+        }
+
+        .table th,
+        .table td {
+            padding: 5px;
+            vertical-align: top;
+            border-top: 1px solid #000;
+            text-align: center;
+        }
+
+        .table thead th {
+            vertical-align: bottom;
+            border-bottom: 2px solid #000;
+        }
+
+        .table tbody+tbody {
+            border-top: 2px solid #000;
+        }
+
+        .table .table {
+            background-color: #fff;
+        }
+
+        .list-group {
+            display: block;
+            width: 100%;
+            list-style: none;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        .list-group p {
+            width: 100%;
+            height: 20px;
+            line-height: 20px;
+            list-style: none;
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h3>Evaluation Report</h3>
+            </div>
+
+            <div class="list-group">
+                <p>Department:{{exam_data.DepartmentId}}
+                    <p>Class: {{ exam_data.ClassId }} Section:{{exam_data.SectionId}} </p>
+                    <p>Subject:{{exam_data.SubjectId}} Exam:{{exam_data}}</p>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Student Name</th>
+                        <th>Registartion Number</th>
+                        <th>Marks</th>
+                        <th>Grade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for val in students%}
+                    {%if val%}
+                    {%for Marks in val%}
+                    {%if Marks%}
+                    <tr class="form-row">
+                        <td>
+                            {{Marks.StudentId.PersonId}}
+                        </td>
+
+                        <td>
+                            {{Marks.StudentId.registrationNumber}}
+                        </td>
+                        <td>
+                            {{Marks.obtainedMarks}}
+                        </td>
+
+                        <td>
+                            {{Marks.Grade}}
+                        </td>
+
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+                    {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+
+</html>

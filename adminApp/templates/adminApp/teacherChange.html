@@ -1,0 +1,82 @@
+{% extends "admin/change_form.html" %}
+
+{% block breadcrumbs %}
+{% endblock %}
+{% block field_sets %}
+
+<div>
+    <fieldset class="module aligned">
+        {% for field in form %}
+        <div class="form-row field">
+            {{ field.errors }}
+            {{ field.label_tag }} {{ field }}
+            {% if field.help_text %}
+            <p class="help">{{ field.help_text|safe }}</p>
+            {% endif %}
+        </div>
+        {% endfor %}
+        {{block.super}}
+
+    </fieldset>
+    {% if notClerk %}
+    <fieldset class="module">
+        <h2>Courses</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        <h3><b>Name</b></h3>
+                    </th>
+                    <th>
+                        <h3><b>Class</b></h3>
+                    </th>
+                    <th>
+                        <h3><b>Section</b></h3>
+                    </th>
+                    <th>
+                        <h3><b>Semster Number</b></h3>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for val in courses  %}
+                {% if val %}
+                <fieldset class="module aligned">
+                    <tr class="form-row">
+                        <td>
+                            <a href=""
+                                class="btn btn-outline-secondary">{{val.SubjectId}}</a>
+
+                        </td>
+                        <td>
+                            <a href=""
+                                class="btn btn-outline-secondary">{{val.SectionId.ClassId}}</a>
+
+                        </td>
+                        <td>
+                            <a href=""
+                                class="btn btn-outline-secondary">{{val.SectionId}}</a>
+
+                        </td>
+                        <td>
+                            <a href=""
+                                class="btn btn-outline-secondary">{{val.SubjectId}}</a>
+
+                        </td>
+                    </tr>
+                </fieldset>
+                {% endif %}
+                {% endfor %}
+                <tr class="add-row">
+                    <td colspan="4">
+                        <a href="">add Courses</a>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </fieldset>
+    {% endif %}
+</div>
+
+{% endblock %}

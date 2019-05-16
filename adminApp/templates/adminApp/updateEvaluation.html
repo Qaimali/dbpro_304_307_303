@@ -1,0 +1,70 @@
+{% extends "admin/base_site.html" %}
+
+{% block breadcrumbs %}
+{% endblock %}
+{% block branding %}
+<h1 id="site-name"><a href="{% url 'admin:index' %}">Learning Managemnet System</a></h1>
+{% endblock %}
+{% block content %}
+<fieldset class="module">
+
+    <form class="form-inline" action="" method='post'>
+        {% csrf_token %}
+        <h2>Evaluation</h2>
+
+
+        <h4>Depertment:{{exam_data.DepartmentId}}</h4>
+        <h4>Class:{{exam_data.ClassId}}</h4>
+        <h4>Section:{{exam_data.SectionId}}</h4>
+        <h4>Subject:{{exam_data.SubjectId}}</h4>
+        <h4>Exam:{{exam_data}}</h4>
+        <a href="{% url 'admin:adminApp_section_evaluation_pdf' exam_data.id %}">Genrate Report</a>
+        <table>
+            <thead>
+                <tr>
+                    <td>
+                        <h4>Student Name</h4>
+                    </td>
+
+                    <td>
+                        <h4> Registartion Number</h4>
+                    </td>
+                    <td>
+                        <h4> Marks</h4>
+                    </td>
+                    
+                    <td>
+                        <h4> Grade</h4>
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                {%for val in students%}
+                {%if val%}
+                {%for Marks in val%}
+                {%if Marks%}
+                <tr>
+                    <td>
+                        {{Marks.StudentId.PersonId}}
+                    </td>
+
+                    <td>
+                        {{Marks.StudentId.registrationNumber}}
+                    </td>
+                    <td>
+                        {{Marks.obtainedMarks}}
+                    </td>
+                    
+                    <td>
+                        {{Marks.Grade}}
+                    </td>
+                </tr>
+                {%endif %}
+                {%endfor%}
+                {%endif %}
+                {%endfor%}
+            </tbody>
+        </table
+    </form>
+</fieldset>
+{% endblock %}

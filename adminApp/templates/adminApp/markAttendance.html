@@ -1,0 +1,64 @@
+{% extends "admin/base_site.html" %}
+
+{% block breadcrumbs %}
+{% endblock %}
+{% block branding %}
+<h1 id="site-name"><a href="{% url 'admin:index' %}">Learning Managemnet System</a></h1>
+{% endblock %}
+{% block content %}
+<fieldset class="module">
+
+    <form class="form-inline" action="{% url 'admin:adminApp_section_attendance' SectionId semsterId  subjectId %}"
+        method='post'>
+        {% csrf_token %}
+        <h2>Attendacce</h2>
+
+        <a href="{% url 'admin:adminApp_subject_attendance' SectionId semsterId  subjectId %}">View
+            Attendance</a>
+
+        <h4>Class:{{classId}}</h4>
+        <h4>Section:{{SectionId}}</h4>
+        {{ dateForm }}
+
+        <table>
+            <thead>
+                <tr>
+                    <td>
+                        <h4>Student Name</h4>
+                    </td>
+
+                    <td>
+                        <h4> Registartion Number</h4>
+                    </td>
+                    <td>
+                        <h4> Status</h4>
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                {%for val in students%}
+                {%if val%}
+                <tr>
+                    <td>
+                        {{val.PersonId}}
+                    </td>
+
+                    <td>
+                        {{val.registrationNumber}}
+                    </td>
+                    <td>
+                        <input type="checkbox" name={{val.registrationNumber}}>
+                    </td>
+                </tr>
+                {%endif %}
+                {%endfor%}
+
+            </tbody>
+
+
+
+        </table>
+        <button type="submit" class="btn btn-secondary mb-2">Add</button>
+    </form>
+</fieldset>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends "admin/base_site.html" %}
+{% block branding %}
+<h1 id="site-name"><a href="{% url 'admin:index' %}">Learning Managemnet System</a></h1>
+{% endblock %}
+
+{% block breadcrumbs %}
+{% endblock %}
+{% block content %}
+<fieldset class="module">
+    <h2>Semsters</h2>
+    <table>
+        <tr class="form-row">
+            <td>
+                <a href="{% url 'admin:adminApp_section_subjects' SectionId 1 %}">Ist Semster</a>
+            </td>
+        </tr>
+        <tr class="form-row">
+            <td>
+                <a href="{% url 'admin:adminApp_section_subjects' SectionId 2 %}">2nd Semster</a>
+            </td>
+        </tr>
+        <tr class="form-row">
+            <td>
+                <a href="{% url 'admin:adminApp_section_subjects' SectionId 3 %}">3rd Semster</a>
+            </td>
+        </tr>
+        <tr class="form-row">
+            <td>
+                <a href="{% url 'admin:adminApp_section_subjects' SectionId 4 %}">4th Semster</a>
+            </td>
+        </tr>
+        <tr class="form-row">
+            <td>
+                <a href="{% url 'admin:adminApp_section_subjects' SectionId 5 %}">5th Semster</a>
+            </td>
+        </tr>
+        <tr class="form-row">
+            <td>
+                <a href="{% url 'admin:adminApp_section_subjects' SectionId 6 %}">6th Semster</a>
+            </td>
+        </tr>
+        <tr class="form-row">
+            <td>
+                <a href="{% url 'admin:adminApp_section_subjects' SectionId 7 %}">7th Semster</a>
+            </td>
+        </tr>
+        <tr class="form-row">
+            <td>
+
+                <a href="{% url 'admin:adminApp_section_subjects' SectionId 8 %}">8th Semster</a>
+            </td>
+        </tr>
+    </table>
+</fieldset>
+{% endblock %}
